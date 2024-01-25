@@ -1,6 +1,8 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    background-image: url('l3.jpg');
+    background-size: cover; 
+    background-position: center; 
     margin: 0;
     display: flex;
     justify-content: center;
@@ -43,4 +45,25 @@ button:hover {
 
 .shortened-url {
     margin-top: 20px;
+}
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    body {
+        background-size: auto; /* Adjust background size for smaller screens */
+    }
+
+    .container {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Adjust width for medium-sized screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%; /* Adjust width for smaller screens */
+    }
 }
