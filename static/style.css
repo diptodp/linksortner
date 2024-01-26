@@ -61,9 +61,6 @@ button:hover {
 }
 /* Media queries for responsiveness */
 @media (max-width: 600px) {
-    body {
-        background-size: auto; /* Adjust background size for smaller screens */
-    }
 
     .container {
         width: 90%; /* Adjust width for smaller screens */
@@ -78,5 +75,17 @@ button:hover {
 @media (max-width: 480px) {
     .container {
         width: 75%; /* Adjust width for smaller screens */
+    }
+}
+@media (max-width: 768px) {
+    body {
+        background-size: auto; /* Adjust background size for medium-sized screens */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: auto;
+         /* Adjust background size for smaller screens */
     }
 }
