@@ -64,6 +64,6 @@ button:hover {
 
 @media (max-width: 480px) {
     .container {
-        width: 95%; /* Adjust width for smaller screens */
+        width: 75%; /* Adjust width for smaller screens */
     }
 }
