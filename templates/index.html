@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Link Shortener</title>
+    <script>
+        // Function to copy the shortened URL to the clipboard and display "Copied!"
+        function copyToClipboard() {
+            var urlField = document.getElementById('shortened-url');
+            var urlText = urlField.getElementsByTagName('a')[0].innerText;
+
+            var tempInput = document.createElement('input');
+            tempInput.value = urlText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Display "Copied!" text on the button
+            var copyButton = document.getElementById('copy-button');
+            copyButton.innerText = 'Copied!';
+            setTimeout(function () {
+                copyButton.innerText = 'Copy URL'; // Reset the text after a delay
+            }, 2000); // Adjust the delay time as needed
+        }
+    </script>
 </head>
+
 <body>
     <div class="container">
         <h1>Link Shortener</h1>
         <form action="{{ url_for('shorten') }}" method="post">
             <label for="url">Enter URL:</label>
-            <input type="url" name="url" required>
+            <input type="url" name="url" id="urlInput" required>
             <button type="submit">Shorten</button>
         </form>
         {% if short_url %}
-            <div class="shortened-url">
-                <p>Shortened URL:</p>
-                <a href="{{ url_for('redirect_to_original', short_url=short_url) }}" target="_blank">{{ url_for('redirect_to_original', short_url=short_url, _external=True) }}</a>
-            </div>
+        <div class="shortened-url" id="shortened-url">
+            <p>Shortened URL:</p>
+            <a href="{{ url_for('redirect_to_original', short_url=short_url) }}" target="_blank">{{
+                url_for('redirect_to_original', short_url=short_url, _external=True) }}</a>
+            <button id="copy-button" onclick="copyToClipboard()">Copy URL</button>
+        </div>
         {% endif %}
     </div>
 </body>
+
 </html>
